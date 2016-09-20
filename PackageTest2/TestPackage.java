@@ -1,7 +1,7 @@
 import MyPackage2.*;
 import MyPackage2.AAA.*;
 import MyPackage2.BBB.*;
-import MyPackage3.*;
+import com.sunsunsoft.MyPackage3.*;
 
 class TestPackage {
   public static void main(String args[]) {
