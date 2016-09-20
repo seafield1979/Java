@@ -8,11 +8,26 @@ do
     args="${args} ${arg}"
 done
 
-# javac -encoding UTF-8 test_class1.java
-# java TestClass $args
+case $1 in
+  "basic" ) 
+    javac test_basic.java
+    java TestBasic $args
+    ;;
+  "string" )
+    javac test_string.java
+    java TestString1 $args
+    ;;
+  "class" )
+    javac -encoding UTF-8 test_class1.java
+    java TestClass $args
+    ;;
+  "interface" ) 
+    javac TestImport.java
+    java TestImport $args
+    ;;
+esac
 
-# javac test_string.java
-# java TestString1
 
-javac TestImport.java
-java TestImport
+
+
+

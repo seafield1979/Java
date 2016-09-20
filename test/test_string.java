@@ -6,7 +6,33 @@
 class TestString1 {
     public static void main(String args[]) {
         TestString strTest1 = new TestString();
-        strTest1.test1();
+
+        int mode = 0;
+        if (args.length >= 2) {
+            mode = Integer.parseInt(args[1]);
+        }
+        System.out.println(String.valueOf(mode));
+
+        switch (mode) {
+            case 1:
+                strTest1.test1();
+                break;
+            case 2:
+                strTest1.test2();
+                break;
+            case 3:
+                strTest1.test3();
+                break;
+            case 4:
+                strTest1.test4();
+                break;
+            case 5:
+                strTest1.test5();
+                break;
+            case 6:
+                strTest1.test6();
+                break;
+        }
     }
 }
 
@@ -75,6 +101,84 @@ class TestString {
         String str1 = String.valueOf(100);
 
         System.out.printf("%d %s\n",val1, str1);
+    }
+
+    // Stringのメソッド
+    public void test5() {
+        String str = "01234567890";
+        String str2 = "this is an apple!";
+
+        // 文字列が同じかどうかチェックする equals(Object)
+        System.out.println("- equals");
+        boolean ret = "hoge".equals("hoge");
+        System.out.println(ret);
+
+        // 指定位置の文字を抜き出す  charAt(int:pos)
+        System.out.println("- charAt");
+        for (int i=0; i<str.length(); i++) {
+            System.out.println(String.valueOf(str.charAt(i)));
+        }
+
+        // 文字列の切り出し substring(int:start,int:end)
+        System.out.println("- substring");
+        String substr = str.substring(3,6);
+        System.out.println(substr);
+
+        // 検索文字列が見つかった位置を返す indexOf(String:searchStr)
+        System.out.println("- indexOf");
+        int pos = str.indexOf("67");
+        System.out.println(str.substring(pos));
+
+        pos = str.indexOf("hoge");  // 見つからない文字列
+        System.out.println(String.valueOf(pos));  // -1
+
+        // 文字列の結合 concat(String)
+        System.out.println("- concat");
+        String concat1 = str.concat("_concat!");
+        System.out.println(concat1);
+
+        // 先頭、末尾の文字列が一致しているかをチェック endsWith(String) startWith(String)
+        System.out.println("- startsWith, endsWith");
+        System.out.println(String.valueOf(str.startsWith("012")));
+        System.out.println(String.valueOf(str.endsWith("890")));
+
+    }
+
+    // StringBuffer
+    public void test6() {
+        // StringBuffer生成
+        StringBuffer strbuf1 = new StringBuffer();
+        StringBuffer strbuf2 = new StringBuffer("01234567890");
+
+        // 文字列を追加する append
+        System.out.println("- append");
+        StringBuffer strbuf3 = new StringBuffer("hoge");
+        strbuf3.append(" hoge!");
+        System.out.println(strbuf3);
+
+        strbuf3.append(100);
+        System.out.println(strbuf3);
+
+        // 指定位置を削除する delete(int:start, int:end);
+        System.out.println("- delete");
+        strbuf3.delete(1,3);
+        System.out.println(strbuf3);
+
+        // 文字列（その他）を挿入する insert(int:start, String:addStr);
+        System.out.println("- insert");
+        StringBuffer strbuf4 = new StringBuffer("01234567890");
+        strbuf4.insert(0, "hoge_");
+        System.out.println(strbuf4);
+
+        // 指定範囲の文字列を置き換える
+        System.out.println("- replace");
+        StringBuffer strbuf5 = new StringBuffer("01234567890");
+        strbuf5.replace(3,5, "_hoge_");
+        System.out.println(strbuf5);
+
+        // バッファ数を返す capacity()
+        System.out.println("- capacity");
+        System.out.println(String.valueOf(strbuf2.capacity()));
     }
 
     public void disp() {

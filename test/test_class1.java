@@ -3,7 +3,12 @@ class TestClass{
     public static void main(String args[]) {
         int mode = 0;
         if (args.length >= 1) {
-            mode = Integer.parseInt(args[0]);
+            try {
+                mode = Integer.parseInt(args[1]);
+            }
+            catch(Exception e) {
+                System.out.println(e.getMessage());
+            }
         }
         
         switch (mode) {
@@ -42,8 +47,15 @@ class TestClass{
             }
                 break;
             case 5:
-                System.out.println("日本語ほげほげ");
+            {
+                // staticプロパティ、メソッドをテスト
+                System.out.printf("static HOGE:%d\n", TestStatic.HOGE);
+                TestStatic.test1();
+
+                TestStatic static1 = new TestStatic(36);
+                static1.disp();
                 break;
+            }
             case 6:
             {
                 // 継承先のコンストラクタの動作テスト
@@ -117,6 +129,33 @@ class Test{
     public int calc1(int a, int b) {
       System.out.printf("%d + %d", a, b);
       return a+b;
+    }
+}
+
+
+// staticテスト
+class TestStatic {
+    int age;
+
+    TestStatic(int age){
+        this.age = age;
+    }
+
+    // static プロパティ
+    // クラス外からオブジェクトを生成しないで呼び出すことができる
+    public static final int HOGE = 256;
+
+    // staticメソッド
+    // オブジェクトを生成しないで呼び出すことができる
+    public static void test1() {
+        System.out.println("TestStatic test1()");
+    }
+
+    // 通常のメソッド
+    public void disp(){
+        // クラスメソッドを参照するには
+        System.out.printf("TestStatic:disp() %d %d\n", age, this.HOGE);
+        this.test1();
     }
 }
 
