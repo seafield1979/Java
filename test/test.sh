@@ -10,20 +10,24 @@ done
 
 case $1 in
   "basic" ) 
-    javac test_basic.java
+    javac TestBasic.java
     java TestBasic $args
     ;;
   "string" )
-    javac test_string.java
+    javac TestString.java
     java TestString1 $args
     ;;
   "class" )
-    javac -encoding UTF-8 test_class1.java
+    javac -encoding UTF-8 TestClass.java
     java TestClass $args
     ;;
   "interface" ) 
     javac TestImport.java
     java TestImport $args
+    ;;
+  "exception" )
+    javac TestException.java
+    java TestException $args
     ;;
 esac
 
