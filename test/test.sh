@@ -29,6 +29,10 @@ case $1 in
     javac TestException.java
     java TestException $args
     ;;
+  "thread" )
+    javac TestThread.java
+    java TestThread $args
+    ;;
 esac
 
 
