@@ -117,7 +117,6 @@ class SynchronizedClass {
 
     // synchronized メソッドでブロックするパターン
     // synchronized をつけることでこのメソッドにアクセスできるのは常に１つのスレッド
-    // public void block1() {
     synchronized public void synchronizedBlock1() {
         System.out.print("start!");
         try {

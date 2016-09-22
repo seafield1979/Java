@@ -33,6 +33,9 @@ case $1 in
     javac TestThread.java
     java TestThread $args
     ;;
+  "file" ) 
+    javac TestFile.java
+    java TestFile $args
 esac
 
 
