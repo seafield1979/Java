@@ -13,6 +13,10 @@ case $1 in
     javac TestBasic.java
     java TestBasic $args
     ;;
+  "array" )
+    javac TestArray.java
+    java TestArray $args
+    ;;
   "string" )
     javac TestString.java
     java TestString1 $args
@@ -36,6 +40,11 @@ case $1 in
   "file" ) 
     javac TestFile.java
     java TestFile $args
+    ;;
+  "collection" ) 
+    javac TestCollection.java
+    java TestCollection $args
+    ;;
 esac
 
 

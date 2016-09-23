@@ -1,26 +1,4 @@
 import java.io.*;
-/*
- ファイルの入出力を行うには幾つかのパターンがある
- 文字列を読む
- 1. File でファイルを開く
-    FileReaderにFileオブジェクトを渡しファイルを開く
-    BufferedReader で1行づつ文字列を入力
- 2. FileReaderでファイルを開く
-    BufferedReader で1行づつ文字列を入力
- 
- データ(バイナリ)を読む 
- 1. File でファイルを開く
-    InputStream オブジェクト生成 (with File)
-    BufferedInputStream オブジェクトを生成 (with FileInputStream)
- 2. FileInputStream オブジェクト生成 (with File)
-    BufferedInputStream オブジェクトを生成 (with FileInputStream)
-
- 文字を書きこむ
- 1. File でファイルを開く
-    FileWriter オブジェクトを生成 (with File)
-    BufferedWriter で１行づつ文字列を出力
-*/
-
 
 public class TestFile {
     public static void main(String[] args) {
@@ -37,10 +15,11 @@ public class TestFile {
         FileClass file1 = new FileClass();
         switch (mode) {
             case 0:
+                // 文字の読み込み(１文字づつ)
                 file1.readChar("test_files/hoge.txt");
                 break;
             case 1:
-                // 文字列の読み込み
+                // 文字列の読み込み(１行づつ)
                 file1.readText("test_files/hoge.txt");
                 break;
             case 2:
@@ -94,9 +73,9 @@ class FileClass {
             }
             br.close();
         } catch(FileNotFoundException e) { 
-          System.out.println(e);
+            System.out.println(e);
         } catch(IOException e) {
-          System.out.println(e);
+            System.out.println(e);
         }
     }
     
@@ -112,9 +91,9 @@ class FileClass {
             // ファイルを閉じる
             fw.close();
         } catch(FileNotFoundException e) { 
-          System.out.println(e);
+            System.out.println(e);
         } catch(IOException e) {
-          System.out.println(e);
+            System.out.println(e);
         }
     }
 
@@ -149,9 +128,9 @@ class FileClass {
             // 後始末
             raf.close();
         } catch(FileNotFoundException e) { 
-          System.out.println(e);
+            System.out.println(e);
         } catch(IOException e) {
-          System.out.println(e);
+            System.out.println(e);
         }
     }
 
@@ -159,7 +138,6 @@ class FileClass {
     // RandomAccessFile
     public void writeBinary(String fileName) {
         try {
-            System.out.println("writeBinary2");
             RandomAccessFile raf = new RandomAccessFile(fileName, "rw");
 
             // 書き込み
