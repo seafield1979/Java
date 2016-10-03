@@ -45,6 +45,10 @@ case $1 in
     javac TestCollection.java
     java TestCollection $args
     ;;
+  "enum" )
+    javac TestEnum.java
+    java TestEnum $args
+    ;;
 esac
 
 

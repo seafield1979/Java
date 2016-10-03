@@ -57,10 +57,17 @@ class TestArray {
         System.arraycopy(arrayCopySrc, 3, arrayCopyDst, 0, 5);
         this.dispIntArray("arrayCopyDst", arrayCopyDst);
 
+    }
+
+    /**
+     * 多次元配列
+     */
+    public void test2() {
         // 多次元配列
         // 要素の数は揃っていなくてもOK
         // 型名 配列変数名[][];
         // 配列変数名 = new 型名[要素数][];
+        System.out.println("\nmulti array 1");
         int seiseki[][] = new int[2][];
         int array21[] = new int[10];
         int array22[] = new int[20];
@@ -68,16 +75,22 @@ class TestArray {
         seiseki[1] = array22;
          
         // 多次元配列の初期値あり初期化
-        int num[][] = {{10, 8, 5}, {9, 16, 4, 11}, {3, 7, 5}};
+        System.out.println("\nmulti array 2");
+        int num[][] = new int[][]{{10, 8, 5}, {9, 16, 4, 11}, {3, 7, 5}};
         System.out.println("num[][]");
         int count = 0;
-        for (int[] nameArray : names) {
+        for (int[] nameArray : num) {
             count++;
             this.dispIntArray("num" + String.valueOf(count), nameArray);
         }
-    }
 
-    public void test2() {
-
+        // 多次元配列の初期化2
+        System.out.println("\nmulti array 3");
+        String strs[][] = new String[][]{{"hoge1","hoge2"},{"hoge3","hoge4"}};
+        for (String[] array1 : strs) {
+            for (String str : array1) {
+                System.out.println(str);
+            }
+        }
     }
 }

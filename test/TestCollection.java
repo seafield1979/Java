@@ -53,6 +53,7 @@ class TestCollection{
 
 class CollectionClass {
     // ArrayListのテスト
+    // リストに要素を追加、要素の読み出し
     public void testArray1(){
         try {
             // 初期容量が100の配列
