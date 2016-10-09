@@ -52,8 +52,10 @@ class TestCollection{
 
 
 class CollectionClass {
-    // ArrayListのテスト
-    // リストに要素を追加、要素の読み出し
+    /*
+     ArrayListのテスト
+     リストに要素を追加、要素の読み出し
+     */
     public void testArray1(){
         try {
             // 初期容量が100の配列
@@ -88,6 +90,10 @@ class CollectionClass {
         }
     }
 
+    /*
+        ArrayListのテスト
+        要素の追加、削除、読み出し
+     */
     public void testArray2() {
         try {
             // 初期容量が100の配列
@@ -157,26 +163,55 @@ class CollectionClass {
         }       
     }
 
-    // LinkedListをキューとして使用する (先入先出し)
+    /*
+     LinkedListをキューとして使用する (先入先出し)
+     */
     public void testLinkedList2() {
         try {
             // private ArrayList<Rule> list = new ArrayList<Rule>();
             LinkedList<String> list1 = new LinkedList<String>();
 
             // 要素の末尾に要素追加
-            for (int i=0; i<10; i++) {
+            for (int i=0; i<3; i++) {
                 list1.addLast("hoge" + String.valueOf(i));
             }
-            
-            // 要素の取り出し
-            for (int i=0; i<list1.size(); i++) {
-                String str = (String)list1.poll();
-                System.out.println("pop:" + str);
-            }
 
+            // 表示
+            System.out.println("\n 111");
             for (int i=0; i<list1.size(); i++) {
                 System.out.println(list1.get(i));
             }
+            
+            list1.pop();
+
+            System.out.println("\n 222");
+            for (int i=0; i<list1.size(); i++) {
+                System.out.println(list1.get(i));
+            }
+
+            // list1.push("new");
+            list1.addLast("new");
+
+            System.out.println("\n 333");
+            for (int i=0; i<list1.size(); i++) {
+                System.out.println(list1.get(i));
+            }
+
+            list1.pop();
+
+            System.out.println("\n 444");
+            for (int i=0; i<list1.size(); i++) {
+                System.out.println(list1.get(i));
+            }
+
+            // list1.push("new");
+            list1.addLast("new");
+
+            System.out.println("\n 555");
+            for (int i=0; i<list1.size(); i++) {
+                System.out.println(list1.get(i));
+            }
+
 
             // 破棄
             list1.clear();
