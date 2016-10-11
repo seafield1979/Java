@@ -2,7 +2,10 @@
  * スレッドのテスト
  */
 import java.io.*;
-
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledFuture;
 
 class TestThread {
     public static void main(String[] args) {
@@ -54,6 +57,13 @@ class TestThread {
                 WaitThread1 thread2 = new WaitThread1(wc, 1);
                 thread1.start();
                 thread2.start();
+                break;
+            }
+            case 5:
+            // ScheduledExecutorService でスケジュールされたスレッドを実行。一定時間ごとに処理を行ったり一時停止したりできる。
+            {
+                ScheduledThread1 scheduled1 = new ScheduledThread1();
+                scheduled1.test1();
                 break;
             }
             default:
@@ -231,6 +241,51 @@ class WaitThread1 extends Thread {
             } else if (type == 1) {
                 wc.block2(this.name);
             }
+        }
+    }
+}
+
+class ScheduledThread1 {
+    public void test1() {
+        ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
+
+        // scheduleAtFixedRate(Runnable command,
+        //                                   long initialDelay,
+        //                                   long period,
+        //                                   TimeUnit unit);
+        // ScheduledFuture scheduledFuture = service.scheduleAtFixedRate(() -> {
+        //     System.out.println("hey!!");
+        // }, 2, 1, TimeUnit.SECONDS);
+        ScheduledFuture scheduledFuture = service.scheduleAtFixedRate(new MyRunner("my task"), 2, 1, TimeUnit.SECONDS);
+
+        int count = 0;
+        while (true) {
+            try {
+                Thread.sleep(1000);
+            } catch(InterruptedException e) {
+
+            }
+            System.out.println((++count) + " s");
+            if (count > 5) break;
+        }
+        service.shutdown();
+    }
+
+    /**
+     * スケジュールスレッドで実行するタスク
+     */
+    public class MyRunner implements Runnable {
+        private String name;
+        private int count = 0;
+
+        public MyRunner(String name) {
+            this.name = name;
+        }
+
+        @Override
+        public void run() {
+            System.out.println("run " + count);
+            count++;
         }
     }
 }
