@@ -6,6 +6,16 @@ enum  Enum1 {
     HOGE3
 }
 
+enum DAY {
+    MON,
+    TUE,
+    WED,
+    THU,
+    FRI,
+    SAT,
+    SUN
+}
+
 // 整数値を返すことができるEnum。ちょっと面倒臭い
 enum IntEnum { 
     Int1(1),
@@ -24,6 +34,23 @@ enum IntEnum {
     }
     public String getMessage() {
         return String.valueOf(this.id);
+    }
+}
+
+enum EnumStr {
+    TYPE1("AAA"),
+    TYPE2("BBB"),
+    TYPE3("CCC"),
+    ;
+
+    private final String text;
+
+    EnumStr(final String text) {
+        this.text = text;
+    }
+
+    public String getString() {
+        return this.text;
     }
 }
 
@@ -48,6 +75,12 @@ class TestEnum {
                 break;
             case 2:
                 enum1.test2();
+                break;
+            case 3:
+                enum1.test3();
+                break;
+            case 4:
+                enum1.test4();
                 break;
             default:    
         }
@@ -75,5 +108,36 @@ class TestEnum {
         System.out.println("Int1=" + IntEnum.Int1.getMessage());
         System.out.println("Int2=" + IntEnum.Int2.getMessage());
         System.out.println("Int3=" + IntEnum.Int3.getMessage());
+    }
+
+    public void test3() {
+        EnumStr es1 = EnumStr.TYPE1;
+        EnumStr es2 = EnumStr.TYPE2;
+        EnumStr es3 = EnumStr.TYPE3;
+        
+        System.out.println("es1=" + es1.getString());
+        System.out.println("es1=" + es2.getString());
+        System.out.println("es1=" + es3.getString());
+    }
+
+    /**
+     * Enum要素をforループで回す
+     */
+    public void test4() {
+        for (DAY day : DAY.values()) {
+            System.out.println("num:" + day.ordinal() + " " + day.toString());   // num:0 MON 
+        }
+
+        System.out.println("");
+
+        for (Enum1 val : Enum1.values()) {
+            System.out.println("num:" + val.ordinal() + " " + val);
+        }
+        
+        System.out.println("");
+
+        for (EnumStr es : EnumStr.values()) {
+            System.out.println("num:" + es.ordinal() + " " + es.getString());
+        }
     }
 }

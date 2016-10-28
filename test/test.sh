@@ -49,6 +49,14 @@ case $1 in
     javac TestEnum.java
     java TestEnum $args
     ;;
+  "time" )
+    javac TestTime.java
+    java TestTime $args
+    ;;
+  "callback" )
+    javac TestCallback.java
+    java TestCallback $args
+    ;;
 esac
 
 
