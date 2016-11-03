@@ -57,6 +57,11 @@ case $1 in
     javac TestCallback.java
     java TestCallback $args
     ;;
+  "math" )
+    javac TestMath.java
+    java TestMath $args
+    ;;
+
 esac
 
 
